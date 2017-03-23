@@ -2,6 +2,17 @@ $(document).ready(function (){
 
 	$('button').click(function () {
 		$(this).toggleClass('active');
+
+		var panelId = $(this).attr('id') + "panel";
+		
+		$("#" + panelId).toggleClass('hidden');
+
+		var numberOfActivePanels = 4 - $('.hidden').length;
+
+		$('.panel').width(($(window).width() / numberOfActivePanels) - 10);
+
+
+
 	});
 
 
@@ -9,10 +20,13 @@ $(document).ready(function (){
 
 	$('.panel').width(($(window).width() / 2) - 10);
 
-	// FUNCTIONALITY FOR THE HTML TO IFRAME FEATURE //
+	// FUNCTIONALITY FOR THE HTML TO IFRAME FEATURE 
 	$('textarea').on('change keyup paste', function() {
 
 		$('iframe').contents().find('html').html($('#htmlpanel').val());
 
 	});
+
+	// FUNCTIONALITY FOR THE CSS TO IFRAME FEATURE 
+
 });
