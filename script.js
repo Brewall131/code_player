@@ -1,5 +1,21 @@
 $(document).ready(function (){
 
+	//UPDATING THE OUTPUT OF THE IFRAME WHEN THE PAGE LOADS, AND CREATING A FUNCTION FOR EVENTS LATER
+	function updateOutput () {
+		$('iframe').contents().find('html').html("<html><head><style type='text/css'>" + $('#csspanel').val() + "</style></head><body>" + $('#htmlpanel').val() + "</body></html>");
+		
+		document.getElementById("outputpanel").contentWindow.eval($('#javascriptpanel').val());
+		
+		eval($('javascriptpanel').val());
+	};
+
+	updateOutput();
+
+	//SETTING HEIGHT OF PANELS
+	$('.panel').height($(window).height() - $('#header').height() - 10);
+
+
+	//WHEN BUTTONS ARE PRESSED, TEXTAREAS WITH THE CORRECT WIDTH APPEAR
 	$('button').click(function () {
 		$(this).toggleClass('active');
 
@@ -14,17 +30,9 @@ $(document).ready(function (){
 	});
 
 
-	$('.panel').height($(window).height() - $('#header').height() - 10);
-
-	$('.panel').width(($(window).width() / 2) - 10);
-
-	// FUNCTIONALITY FOR THE HTML TO IFRAME FEATURE 
+	// WHEN THE TEXTAREA IS USED, THE OUTPUT UPDATES
 	$('textarea').on('change keyup paste', function() {
-
-		//$('iframe').contents().find('html').html($("#htmlpanel").val());
-		$('iframe').contents().find('html').html("<html><head><style type='text/css'>" + $('#csspanel').val() + "</style></head><body>" + $('#htmlpanel').val() + "</body></html>");
-
+		updateOutput();
 	});
 
-	// FUNCTIONALITY FOR THE CSS TO IFRAME FEATURE 
 });
