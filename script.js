@@ -6,7 +6,6 @@ $(document).ready(function (){
 		
 		document.getElementById("outputpanel").contentWindow.eval($('#javascriptpanel').val());
 		
-		eval($('javascriptpanel').val());
 	};
 
 	updateOutput();
