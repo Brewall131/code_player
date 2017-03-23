@@ -114,6 +114,7 @@ iframe {
 
 .panel {
 	float: left;
+	border-left:  none;
 }
 
 .hidden {
